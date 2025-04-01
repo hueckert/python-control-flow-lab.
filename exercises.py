@@ -101,31 +101,32 @@ determine_season()
 # Exercise 6: Number Guessing Game
 
 def guess_number():
-    target_number = 42
-    max_attempts = 5
-    print("Guess the number between 1 and 100.")
-
-    for attempt in range(1, max_attempts + 1):
-        try:
-            guess = int(input(f"Attempt {attempt}: "))
-            if guess < 1 or guess > 100:
-                print("Please enter a number within the range 1 to 100.")
-                continue
-
-            if guess == target_number:
-                print("Congratulations, you guessed correctly!")
-                return
-            elif guess < target_number:
-                print("Guess is too low.")
-            else:
-                print("Guess is too high.")
-
-            if attempt == max_attempts:
-                print("Last chance!")
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
-
+    # Set the target number
+    target = 42
+    
+    # Inform the user about the game
+    print("Guess the number between 1 and 100. You have 5 attempts.")
+    
+    # Allow up to 5 guesses
+    for attempt in range(1, 6):
+        # Prompt the user for a guess
+        guess = int(input(f"Attempt {attempt}: Enter your guess: "))
+        
+        # Check the guess and provide feedback
+        if guess == target:
+            print("Congratulations, you guessed correctly!")
+            return
+        elif guess < target:
+            print("Your guess is too low.")
+        else:
+            print("Your guess is too high.")
+        
+        # Notify the user if it's their last chance
+        if attempt == 5:
+            print("Last chance!")
+    
+    # If the loop completes without a correct guess
     print("Sorry, you failed to guess the number in five attempts.")
 
-# Call the function to test
+# Call the function
 guess_number()
